@@ -18,6 +18,16 @@ namespace WebAPI.Controller
             await Task.CompletedTask;
             return Ok();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] string message)
+        {
+            //HttpContext.Request.BodyReader.TryRead(out var buffer);
+            //var message = Encoding.UTF8.GetString(buffer.Buffer);
+            await Console.Out.WriteLineAsync($"sent messgage: {message}");
+            await Task.CompletedTask;
+            return Ok();
+        }
     }
 
 
