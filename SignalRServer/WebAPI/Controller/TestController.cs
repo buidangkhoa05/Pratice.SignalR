@@ -12,6 +12,7 @@ namespace WebAPI.Controller
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] string message)
         {
+            await Console.Out.WriteLineAsync($"sent messgage: {message}");
             await Task.CompletedTask;
             return Ok();
         }
