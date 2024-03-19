@@ -4,7 +4,6 @@ public class RealTimeHub : Hub
 
     public async Task NewMessage(string user, string message)
     {
-        var clientID = Clients.Caller.
         await Clients.All.SendAsync("messageReceived", user, message);
     }
 
