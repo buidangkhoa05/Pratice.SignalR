@@ -12,6 +12,8 @@ namespace WebAPI.Controller
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] string message)
         {
+            //HttpContext.Request.BodyReader.TryRead(out var buffer);
+            //var message = Encoding.UTF8.GetString(buffer.Buffer);
             await Console.Out.WriteLineAsync($"sent messgage: {message}");
             await Task.CompletedTask;
             return Ok();
