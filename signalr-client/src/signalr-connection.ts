@@ -12,7 +12,10 @@ class Connector {
 
   constructor() {
     this.connection = new signalR.HubConnectionBuilder()
-      .withUrl(URL)
+      .withUrl(URL, {
+        skipNegotiation: true,
+        transport: signalR.HttpTransportType.WebSockets
+      })
       .withAutomaticReconnect()
       .build();
 

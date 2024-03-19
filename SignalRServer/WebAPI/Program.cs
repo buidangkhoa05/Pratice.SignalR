@@ -48,8 +48,8 @@ public class Program
         app.MapControllers();
 
         app.MapHub<RealTimeHub>("/hub", opts =>
-            {
-            opts.Transports = HttpTransportType.WebSockets | HttpTransportType.LongPolling;
+        {
+            opts.Transports = HttpTransportType.WebSockets;
         });
 
         app.Run();
