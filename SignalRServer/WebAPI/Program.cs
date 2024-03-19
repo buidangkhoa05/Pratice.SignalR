@@ -43,7 +43,7 @@ public class Program
 
         var app = builder.Build();
 
-        app.UseMiddleware<RequestMiddleware>();
+        //app.UseMiddleware<RequestMiddleware>();
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
@@ -58,7 +58,7 @@ public class Program
             .SetIsOriginAllowed(origin => true)); // allow any origin
 
         app.UseHttpsRedirection();
-        //app.UseAuthorization();
+        app.UseAuthorization();
         app.MapControllers();
 
         app.MapHub<RealTimeHub>("/hub", opts =>

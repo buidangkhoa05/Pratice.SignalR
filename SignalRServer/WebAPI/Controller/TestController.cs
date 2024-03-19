@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace WebAPI.Controller
 {
@@ -10,11 +11,11 @@ namespace WebAPI.Controller
     {
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] string message)
+        public async Task<IActionResult> Post([FromBody] DataRequest dataRequest)
         {
             //HttpContext.Request.BodyReader.TryRead(out var buffer);
             //var message = Encoding.UTF8.GetString(buffer.Buffer);
-            await Console.Out.WriteLineAsync($"sent messgage: {message}");
+            await Console.Out.WriteLineAsync($"sent messgage: {JsonConvert.SerializeObject(dataRequest)}");
             await Task.CompletedTask;
             return Ok();
         }
