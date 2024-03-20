@@ -3,11 +3,13 @@ import "./App.css";
 import Connector from "./signalr-connection";
 
 function App() {
-  const { newMessage, events } = Connector();
+  const { newMessage, events, dataUpdateEvent } = Connector();
   const [message, setMessage] = useState("initial value");
 
   useEffect(() => {
-    events((_, message) => setMessage(message));
+    // events((_, message) => setMessage(message));
+    dataUpdateEvent((dataType, data) => setMessage(dataType + ":" + data));
+    console.log("useEffect");
   });
 
   return (

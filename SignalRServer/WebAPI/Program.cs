@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using WebAPI.Middleware;
 
 namespace WebAPI;
 
@@ -33,6 +34,7 @@ public class Program
         .AddJsonProtocol(options => options.PayloadSerializerOptions.PropertyNamingPolicy = null);
 
         builder.Services.AddScoped<RequestMiddleware>();
+        builder.Services.AddScoped<AuthensMidlleware>();
 
 
         builder.Services.AddControllers();
@@ -51,6 +53,8 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
+        app.UseMiddleware<AuthensMidlleware>();
 
         app.UseCors(x => x
             .AllowAnyMethod()
